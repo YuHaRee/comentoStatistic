@@ -15,7 +15,6 @@ public class StatisticController {
     @Autowired
     StatisticService statisticService;
 
-
     @RequestMapping(value="/api/v1/logins/{year}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<YearCountDto> getYearLoginCount(@PathVariable("year") String year){

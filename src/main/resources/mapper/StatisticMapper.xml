@@ -11,7 +11,6 @@
         where left(ri.createDate, 2) = #{year};
     </select>
 
-
     <select id="selectYearMonthLogin" parameterType="string" resultType="YearMonthCountDto">
         select concat('20', #{yearMonth}) as yearMonth, count(*) as totCnt
         from statistic1.requestInfo ri

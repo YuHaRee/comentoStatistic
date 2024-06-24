@@ -9,5 +9,4 @@ public interface StatisticMapper {
 
     YearCountDto selectYearLogin(String year);
     YearMonthCountDto selectYearMonthLogin(String yearMonth);
-
 }
