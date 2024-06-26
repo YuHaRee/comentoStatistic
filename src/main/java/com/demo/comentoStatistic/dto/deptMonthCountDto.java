@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class workdayDto {
+public class deptMonthCountDto {
+    String departmentName;
+    String yearMonth;
     Integer totCnt;
 }

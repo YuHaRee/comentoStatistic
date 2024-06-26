@@ -1,5 +1,5 @@
 package com.demo.comentoStatistic.dto;
 
-public class DateAvgCountDto {
+public class dateAvgCountDto {
     private double avgCnt;
 }

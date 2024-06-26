@@ -28,14 +28,18 @@
 
     <!--일 평균 로그인 수 -->
     <select id="selectDateAvgLoginCount" resultType="DateAvgCountDto">
-        select count(requestID) as avgCnt
+        select cast(DISTINCT count requestID) AS avgCnt)
         from statistic1.requestInfo ri
         group by ri.createDate
     </select>
 
-    <!-- 공휴일 제외 로그인 수 -->
-    <select id="" resultType="">
-        select
-    </select>
+    <!-- 공휴일 제외 로그인 수 (수정중) -->
 
+
+    <!-- 부서별 월별 로그인 수 -->
+    <select id="selectDeptMonthLoginCount" resultType="deptMonthCountDto">
+        select department as departmentName, left(createDate,4) as yearMonth, count(*) as totCnt
+        from statistic1.requestInfo ri
+        group by ri.department, left(createDate,4);
+    </select>
 </mapper>

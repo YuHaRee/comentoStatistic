@@ -5,6 +5,8 @@ import com.demo.comentoStatistic.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StatisticService {
 
@@ -27,11 +29,15 @@ public class StatisticService {
         return statisticMapper.selectYearMonthDateLogin(year + month + day);
     }
 
-    public DateAvgCountDto getDateAvgLoginCount() {
-        return statisticMapper.selectDateAvgCountLogin();
+    public dateAvgCountDto getDateAvgLoginCount() {
+        return statisticMapper.selectDateAvgLoginCount();
     }
 
-    public workdayDto getworkdayLoginCount() {
-        return statisticMapper.selectworkdayLoginCount();
+    public workdayDto getWorkdayLoginCount() {
+        return statisticMapper.selectWorkdayLoginCount();
+    }
+
+    public List<deptMonthCountDto> getDeptMonthLoginCount() {
+        return statisticMapper.selectDeptMonthLoginCount();
     }
 }
