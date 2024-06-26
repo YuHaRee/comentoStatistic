@@ -10,4 +10,5 @@ public class deptMonthCountDto {
     String departmentName;
     String yearMonth;
     Integer totCnt;
+
 }

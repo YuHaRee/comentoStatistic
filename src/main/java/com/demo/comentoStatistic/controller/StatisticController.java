@@ -43,14 +43,14 @@ public class StatisticController {
         return ResponseEntity.ok(statisticService.getYearMonthDateLogins(year,month,day));
     }
 
-    // 일 평균
+    // 일 평균 수
     @RequestMapping(value = "api/v1/logins/avg", produces = "application/json")
     @ResponseBody
     public Object getDateAvgLoginCount() {
         return ResponseEntity.ok(statisticService.getDateAvgLoginCount());
     }
 
-    // 휴일 제외
+    // 공휴일 제외
     @RequestMapping(value = "api/v1/logins/workday", produces = "application/json")
     @ResponseBody
     public Object getWorkdayLoginCount() {
