@@ -34,7 +34,10 @@
     </select>
 
     <!-- 공휴일 제외 로그인 수 (수정중) -->
-
+    <select id="selectWorkdayLoginCount" resultType="deptMonthCountDto">
+        select
+        from statistic1.requestInfo
+    </select>
     <!-- 부서별 월별 로그인 수 -->
     <select id="selectDeptMonthLoginCount" resultType="deptMonthCountDto">
         select department as departmentName, left(createDate,4) as yearMonth, count(*) as totCnt
