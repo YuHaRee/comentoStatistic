@@ -5,16 +5,37 @@
 
 <mapper namespace="com.demo.comentoStatistic.dao.StatisticMapper">
 
+    <!-- 연도별 접속자 수 -->
     <select id="selectYearLogin" parameterType="string" resultType="YearCountDto">
         select concat('20', #{year}) as year, count(*) as totCnt
         from statistic1.requestInfo ri
         where left(ri.createDate, 2) = #{year};
     </select>
 
+    <!-- 월별 접속자 수 -->
     <select id="selectYearMonthLogin" parameterType="string" resultType="YearMonthCountDto">
         select concat('20', #{yearMonth}) as yearMonth, count(*) as totCnt
         from statistic1.requestInfo ri
         where left(ri.createDate, 4) = #{yearMonth};
+    </select>
+
+    <!--일별 접속자 수 -->
+    <select id="selectYearMonthDateLogin" parameterType="string" resultType="YearMonthDateCountDto">
+        select concat('20', #{yearMonthDate}) as yearMonthDate, count(*) as totCnt
+        from statistic1.requestInfo ri
+        where left(ri.createDate, 6) = #{yearMonthDate};
+    </select>
+
+    <!--일 평균 로그인 수 -->
+    <select id="selectDateAvgLoginCount" resultType="DateAvgCountDto">
+        select count(requestID) as avgCnt
+        from statistic1.requestInfo ri
+        group by ri.createDate
+    </select>
+
+    <!-- 공휴일 제외 로그인 수 -->
+    <select id="" resultType="">
+        select
     </select>
 
 </mapper>
