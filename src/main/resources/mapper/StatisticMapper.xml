@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.demo.comentoStatistic.dao.StatisticMapper">
 
@@ -28,19 +27,29 @@
 
     <!--일 평균 로그인 수 -->
     <select id="selectDateAvgLoginCount" resultType="DateAvgCountDto">
-        select cast(DISTINCT count requestID) AS avgCnt)
-        from statistic1.requestInfo ri
-        group by ri.createDate
+        SELECT AVG(dateLoginCnt) AS avgCnt
+        FROM (
+        SELECT COUNT(*) AS dateLoginCnt
+        FROM statistic1.requestInfo ri
+        GROUP BY DATE_FORMAT(ri.createDate, '%Y-%m-%d')
+        ) AS daily_counts;
     </select>
 
     <!-- 공휴일 제외 로그인 수 (수정중) -->
-    <select id="selectWorkdayLoginCount" resultType="deptMonthCountDto">
-        select
-        from statistic1.requestInfo
+    <select id="selectWorkdayLoginCount" resultType="workdayDto">
+        SELECT COUNT(*) AS totCnt
+        FROM statistic1.requestInfo ri
+        WHERE WEEKDAY(ri.createDate) &lt; 5
+        AND NOT EXISTS (
+        SELECT 1
+        FROM statistic1.holidayInfo h
+        WHERE DATE(ri.createDate) = h.holidayDate
+        );
     </select>
     <!-- 부서별 월별 로그인 수 -->
     <select id="selectDeptMonthLoginCount" resultType="deptMonthCountDto">
-        select department as departmentName, left(createDate,4) as yearMonth, count(*) as totCnt
+        select department as departmentName,
+        left(createDate,4) as yearMonth, count(*) as totCnt
         from statistic1.requestInfo ri
         group by ri.department, left(createDate,4);
     </select>
