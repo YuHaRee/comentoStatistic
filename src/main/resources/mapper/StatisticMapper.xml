@@ -35,7 +35,7 @@
         ) AS daily_counts;
     </select>
 
-    <!-- 공휴일 제외 로그인 수 (수정중) -->
+    <!-- 공휴일 제외 로그인 수 -->
     <select id="selectWorkdayLoginCount" resultType="workdayDto">
         SELECT COUNT(*) AS totCnt
         FROM statistic1.requestInfo ri
