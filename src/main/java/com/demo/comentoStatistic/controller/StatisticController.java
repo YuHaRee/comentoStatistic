@@ -51,10 +51,10 @@ public class StatisticController {
     }
 
     // 공휴일 제외
-    @RequestMapping(value = "api/v1/logins/workday", produces = "application/json")
+    @RequestMapping(value = "api/v1/logins/nHoliday", produces = "application/json")
     @ResponseBody
-    public Object getWorkdayLoginCount() {
-        return ResponseEntity.ok(statisticService.getWorkdayLoginCount());
+    public Object getNHolidayLoginCount() {
+        return ResponseEntity.ok(statisticService.getNHolidayLoginCount());
     }
 
     //부서별 월별

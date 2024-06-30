@@ -36,7 +36,7 @@
     </select>
 
     <!-- 공휴일 제외 로그인 수 -->
-    <select id="selectWorkdayLoginCount" resultType="workdayDto">
+    <select id="selectNHolidayLoginCount" resultType="nHolidayDto">
         SELECT COUNT(*) AS totCnt
         FROM statistic1.requestInfo ri
         WHERE WEEKDAY(ri.createDate) &lt; 5

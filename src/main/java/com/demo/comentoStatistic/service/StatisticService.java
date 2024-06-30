@@ -32,8 +32,8 @@ public class StatisticService {
         return statisticMapper.selectDateAvgLoginCount();
     }
 
-    public workdayDto getWorkdayLoginCount() {
-        return statisticMapper.selectWorkdayLoginCount();
+    public nHolidayDto getNHolidayLoginCount() {
+        return statisticMapper.selectNHolidayLoginCount();
     }
 
     public List<deptMonthCountDto> getDeptMonthLoginCount() {

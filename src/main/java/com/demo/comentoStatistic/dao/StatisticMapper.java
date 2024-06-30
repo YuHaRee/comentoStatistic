@@ -12,6 +12,6 @@ public interface StatisticMapper {
     YearMonthCountDto selectYearMonthLogin(String yearMonth);
     YearMonthDateCountDto selectYearMonthDateLogin(String yearMonthDate);
     dateAvgCountDto selectDateAvgLoginCount();
-    workdayDto selectWorkdayLoginCount();
+    nHolidayDto selectNHolidayLoginCount();
     List<deptMonthCountDto> selectDeptMonthLoginCount();
 }
